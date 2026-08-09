@@ -1,0 +1,311 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  font-family: Georgia, "Times New Roman", serif;
+  background: #fff8ee;
+  color: #5b281e;
+  overflow-x: hidden;
+}
+
+.opening {
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  position: relative;
+  background:
+    radial-gradient(circle at 50% 20%, rgba(255,255,255,.9), transparent 35%),
+    linear-gradient(135deg, #fff8ee, #f8e1c2);
+  transition: opacity .7s ease, transform .7s ease;
+}
+
+.opening.hide {
+  opacity: 0;
+  transform: scale(1.05);
+  pointer-events: none;
+}
+
+.mandala {
+  position: absolute;
+  top: 7%;
+  font-size: 120px;
+  opacity: .08;
+  animation: spin 18s linear infinite;
+}
+
+.cover-card, .card {
+  width: min(92vw, 470px);
+  text-align: center;
+  border: 1px solid rgba(139, 76, 34, .35);
+  border-radius: 22px;
+  background: rgba(255, 251, 244, .94);
+  box-shadow: 0 18px 50px rgba(91, 40, 30, .16);
+}
+
+.cover-card {
+  padding: 46px 28px;
+  position: relative;
+}
+
+.small {
+  letter-spacing: 3px;
+  font-size: 14px;
+  color: #a45b25;
+}
+
+.lamp {
+  font-size: 44px;
+  margin: 12px 0;
+}
+
+h1 {
+  margin: 4px 0;
+  font-size: clamp(38px, 11vw, 56px);
+  font-weight: 500;
+  color: #7c2f20;
+}
+
+.amp {
+  font-size: 28px;
+  color: #b16b2d;
+  margin: 2px 0;
+}
+
+.invite-text {
+  line-height: 1.7;
+  margin: 22px auto;
+  max-width: 330px;
+}
+
+.open-btn, .map-btn {
+  display: inline-block;
+  border: 0;
+  border-radius: 999px;
+  padding: 14px 28px;
+  background: #8b3e25;
+  color: white;
+  text-decoration: none;
+  font-family: inherit;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 8px 18px rgba(91, 40, 30, .2);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.open-btn:hover, .map-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(91, 40, 30, .28);
+}
+
+.hidden {
+  display: none;
+}
+
+.invitation {
+  min-height: 100vh;
+  padding: 35px 16px;
+  background:
+    radial-gradient(circle at 20% 10%, rgba(202, 128, 60, .12), transparent 22%),
+    radial-gradient(circle at 80% 90%, rgba(202, 128, 60, .12), transparent 22%),
+    #fff8ee;
+}
+
+.card {
+  margin: auto;
+  padding: 38px 24px;
+  animation: cardIn 1s ease both;
+}
+
+.together {
+  margin: 18px 0 10px;
+  font-size: 15px;
+}
+
+.message {
+  line-height: 1.75;
+  margin: 22px auto;
+  max-width: 380px;
+}
+
+.event {
+  margin: 24px 0;
+}
+
+.event h2 {
+  font-size: 21px;
+  color: #8b3e25;
+  margin-bottom: 10px;
+}
+
+.event p {
+  margin: 6px 0;
+}
+
+.divider {
+  color: #b16b2d;
+  font-size: 24px;
+}
+
+.map-btn {
+  margin-top: 12px;
+  font-size: 15px;
+}
+
+.footer {
+  margin: 30px auto 12px;
+  max-width: 360px;
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+.bottom-ornament, .top-ornament {
+  color: #b16b2d;
+  letter-spacing: 8px;
+}
+
+.flowers {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10;
+  overflow: hidden;
+}
+
+.flower {
+  position: absolute;
+  top: -60px;
+  font-size: 28px;
+  animation: fall linear forwards;
+  filter: drop-shadow(0 2px 2px rgba(0,0,0,.08));
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(-60px) rotate(0deg);
+    opacity: 0;
+  }
+  10% { opacity: 1; }
+  100% {
+    transform: translateY(110vh) rotate(540deg);
+    opacity: .9;
+  }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes cardIn {
+  from {
+    opacity: 0;
+    transform: translateY(35px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 420px) {
+  .cover-card, .card {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .invitation {
+    padding: 20px 10px;
+  }
+}
+
+
+
+/* Full-screen flower shower after tapping Open Invitation */
+.flowers {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 100;
+  overflow: hidden;
+}
+
+.flower {
+  position: absolute;
+  top: -70px;
+  animation: fullScreenFall linear forwards;
+  opacity: 0;
+  filter: drop-shadow(0 2px 2px rgba(0,0,0,.12));
+}
+
+@keyframes fullScreenFall {
+  0% {
+    transform: translate3d(0, -70px, 0) rotate(0deg);
+    opacity: 0;
+  }
+  8% {
+    opacity: 1;
+  }
+  55% {
+    transform: translate3d(35px, 55vh, 0) rotate(250deg);
+    opacity: .95;
+  }
+  100% {
+    transform: translate3d(-30px, 115vh, 0) rotate(600deg);
+    opacity: 0;
+  }
+}
+
+/* Card itself appears after the flower shower begins */
+.invitation {
+  position: relative;
+  z-index: 2;
+}
+
+
+/* Bottom-right flower button */
+.flower-button {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  width: 58px;
+  height: 58px;
+  border: 2px solid #b16b2d;
+  border-radius: 50%;
+  background: #fff8ee;
+  color: #8b3e25;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 200;
+  box-shadow: 0 8px 22px rgba(91, 40, 30, .22);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  transition: transform .2s ease;
+}
+
+.flower-button.show {
+  display: flex;
+}
+
+.flower-button:active {
+  transform: scale(.9);
+}
+
+.flower-button.pulse {
+  animation: flowerButtonPulse 1.4s ease-in-out infinite;
+}
+
+@keyframes flowerButtonPulse {
+  50% {
+    transform: scale(1.08);
+  }
+}
